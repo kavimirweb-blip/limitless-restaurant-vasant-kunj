@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Limitless | Eclectic restaurant, Vasant Kunj (concept demo)</title>
+<meta name="description" content="An eclectic restaurant and bar in Vasant Kunj. Pick your mood, browse the menu and reserve a table on WhatsApp. A concept demo, not the official site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Syne:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Brief: Limitless, eclectic restaurant and bar, Vasant Kunj, Delhi.
+   Idea: no limits on the menu, so no fixed menu page. Pick a mood (Lunch / Golden hour / Late night) and the room, light, dishes and drinks change with it.
+   Photos: labelled Unsplash stock, placeholders for the restaurant's own. */
+:root{--bg:#120e0b;--fg:#f4ead9;--ac:#e0a04a;--ac2:#f6cf8b;--card:#1d1712;--mute:#a99a85;--line:rgba(244,234,217,.14);--disp:'Syne',system-ui,sans-serif;--ser:'Italiana',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+body[data-m=day]{--bg:#f7efe2;--fg:#2a1d12;--ac:#b8651b;--ac2:#8a4510;--card:#fffaf1;--mute:#7b6a58;--line:rgba(42,29,18,.14)}
+body[data-m=gold]{--bg:#2a1710;--fg:#fbe9d0;--ac:#ff9a4d;--ac2:#ffd08a;--card:#37201a;--mute:#c9a98d;--line:rgba(251,233,208,.16)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .9s var(--ease),color .9s var(--ease)}
+img{display:block;max-width:100%}a{color:inherit}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin:0 auto}
+h1,h2,h3{font-family:var(--disp);font-weight:800;line-height:.95;letter-spacing:-.03em}
+h2{font-size:clamp(2.3rem,5.4vw,4.4rem)}
+.lab{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--ac);transition:color .9s}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:1em 1.7em;border-radius:99px;background:var(--ac);color:var(--bg);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;text-decoration:none;font-family:var(--disp);transition:transform .3s,background .9s,color .9s}
+.btn:hover{transform:translateY(-2px)}.btn.o{background:none;border:1.5px solid var(--line);color:var(--fg)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.rv.in{opacity:1;transform:none}
+nav{position:fixed;inset:0 0 auto;z-index:50;padding:14px 0;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .9s}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.logo{font-family:var(--ser);font-size:1.7rem;text-decoration:none;letter-spacing:.08em;display:flex;align-items:center;gap:8px}.logo svg{width:30px;color:var(--ac);transition:color .9s}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}nav ul a{text-decoration:none;opacity:.7}nav ul a:hover{opacity:1;color:var(--ac)}
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 64px;overflow:hidden}
+.hero .bg{position:absolute;inset:0}.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s var(--ease)}
+.hero .bg img.on{opacity:1}.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 35%,transparent),var(--bg) 97%);transition:.9s}
+.hero .c{position:relative}
+.hero h1{font-size:clamp(3.8rem,13vw,12rem);letter-spacing:-.05em}
+.hero h1 span{font-family:var(--ser);font-weight:400;letter-spacing:0;color:var(--ac);transition:color .9s}
+.hero p.s{max-width:460px;margin:18px 0 26px;color:var(--mute)}
+.moods{display:inline-flex;gap:6px;background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid var(--line);border-radius:99px;padding:5px;backdrop-filter:blur(8px);margin-bottom:22px;flex-wrap:wrap}
+.moods button{padding:.6em 1.2em;border-radius:99px;font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:.4s}.moods button.on{background:var(--ac);color:var(--bg)}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:46px;align-items:start}
+.menu img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;position:sticky;top:100px}
+.mi{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.mi h3{font-size:1.25rem;letter-spacing:-.01em}.mi p{font-size:.86rem;color:var(--mute);font-weight:400;margin-top:2px;font-family:var(--sans);letter-spacing:0}
+.mi .d{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);min-width:16px}.mi .pr{font-family:var(--ser);font-size:1.3rem;color:var(--ac2)}
+.mi .tag{display:inline-block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--ac);color:var(--ac);border-radius:99px;padding:1px 8px;margin-left:6px;vertical-align:middle;font-family:var(--sans);font-weight:700}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}.cols div{overflow:hidden;border-radius:6px}.cols img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s var(--ease)}.cols div:hover img{transform:scale(1.06)}
+.band{background:var(--card);transition:background .9s}
+section{padding:100px 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:18px}
+.form label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:700;display:block;margin-bottom:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips button{padding:.55em 1.1em;border-radius:99px;border:1px solid var(--line);font-size:.85rem;transition:.3s}.chips button.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.form input{width:100%;background:none;border:1px solid var(--line);border-radius:10px;padding:.8em 1em;color:var(--fg);font:inherit}
+.form .sum{font-family:var(--ser);font-size:1.3rem;color:var(--ac2)}
+footer{padding:30px 0 90px;border-top:1px solid var(--line);font-size:.78rem;color:var(--mute);text-align:center}
+.sticky{display:none}
+@media(max-width:860px){nav ul{display:none}.menu,.res{grid-template-columns:1fr;gap:30px}.menu img{position:static;aspect-ratio:16/10}.cols{grid-template-columns:1fr 1fr}.cols div:last-child{display:none}section{padding:76px 0}
+.sticky{display:flex;position:fixed;inset:auto 0 0;z-index:60;padding:10px 16px;background:var(--bg);border-top:1px solid var(--line)}.sticky .btn{flex:1;justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body data-m="night">
+<nav><div class="wrap"><a class="logo" href="#"><svg viewBox="0 0 60 30" fill="none" stroke="currentColor" stroke-width="4"><path d="M30 15C24 4 8 4 8 15s16 11 22 0c6-11 22-11 22 0s-16 11-22 0z"/></svg>Limitless</a><ul><li><a href="#menu">Menu</a></li><li><a href="#room">The room</a></li><li><a href="#reserve">Reserve</a></li></ul><a class="btn" href="#reserve" style="padding:.7em 1.3em">Reserve</a></div></nav>
+
+<header class="hero"><div class="bg"><img class="on" data-m="night" src="img/hall.jpg" alt="Dark restaurant hall with warm lights"><img data-m="day" src="img/garden.jpg" alt="Sunlit garden dining room"><img data-m="gold" src="img/warm.jpg" alt="Warm lit dining room"></div>
+<div class="wrap c"><div class="moods" id="moods" role="group" aria-label="Choose a mood"><button data-m="day">Lunch</button><button data-m="gold">Golden hour</button><button class="on" data-m="night">Late night</button></div>
+<p class="lab">Eclectic kitchen &amp; bar · Vasant Kunj</p><h1>Un<span>limited.</span></h1>
+<p class="s" id="hs">After dark, the lights drop, the glass fills and the menu stops following rules.</p><a class="btn" href="#reserve">Reserve a table</a> <a class="btn o" href="#menu">See the menu</a></div></header>
+
+<section id="menu"><div class="wrap"><p class="lab rv">Menu · <span id="mn">Late night</span></p><h2 class="rv">What the room <em style="font-family:var(--ser);font-weight:400;color:var(--ac)">wants now.</em></h2>
+<div class="menu"><img id="mimg" src="img/cocktail.jpg" alt=""><div id="ml"></div></div>
+<p style="color:var(--mute);font-size:.78rem;margin-top:24px">Dishes and prices are sample content for this concept. The restaurant's real menu goes here.</p></div></section>
+
+<section class="band" id="room"><div class="wrap"><p class="lab rv">The room</p><h2 class="rv">Sit anywhere. <em style="font-family:var(--ser);font-weight:400;color:var(--ac)">Stay longer.</em></h2>
+<div class="cols rv"><div><img src="img/booth.jpg" alt="Booth seating" loading="lazy"></div><div><img src="img/spritz.jpg" alt="Spritz cocktails" loading="lazy"></div><div><img src="img/thali.jpg" alt="Thali" loading="lazy"></div></div>
+<p style="color:var(--mute);font-size:.75rem;margin-top:12px">Stock photos (Unsplash contributors), placeholders for the restaurant's own.</p></div></section>
+
+<section id="reserve"><div class="wrap res"><div><p class="lab">Reserve</p><h2>A table, <em style="font-family:var(--ser);font-weight:400;color:var(--ac)">your way.</em></h2><p style="color:var(--mute);margin-top:18px;max-width:420px">Choose the day, time and guests. The request opens on WhatsApp and the team confirms your table.</p><p style="margin-top:22px;font-size:.92rem">Call <a href="tel:09818282129">098182 82129</a><br><span style="color:var(--mute)">Vasant Kunj, New Delhi. Add real address and hours.</span></p></div>
+<div class="form"><div><label>Day</label><div class="chips" id="cd"></div></div><div><label>Time</label><div class="chips" id="ct"></div></div><div><label>Guests</label><div class="chips" id="cg"></div></div><div><label>Name</label><input id="nm" placeholder="Your name" autocomplete="name"></div><div class="sum" id="sum"></div><a class="btn" id="rs" href="#" style="justify-content:center">Request on WhatsApp</a></div></div></section>
+<footer>Concept demo by Kavimir for Limitless. Not the official site. Photos: Unsplash contributors.</footer>
+<div class="sticky"><a class="btn" href="#reserve">Reserve a table</a></div>
+<script>
+const M={day:{n:'Lunch',s:'Daylight, long tables and plates made for sharing. Lunch should never feel rushed.',img:'img/curry.jpg',i:[['Samosa chaat, smashed','Tamarind, mint, pomegranate',350,'Share'],['Slow curry & rice','Seasonal vegetables, house masala',480,''],['Thali of the day','Six small bowls, bread, sweet',620,'Chef'],['Raw mango spritz','Gin-free, sparkling',290,''],['Cold brew tonic','Orange peel',260,'']]},
+gold:{n:'Golden hour',s:'The sun drops, the glass is cold, the snacks arrive. This is the hour we built the bar for.',img:'img/samosa.jpg',i:[['Crispy samosa, green chilli','Beetroot, pomegranate',320,'Share'],['Rosemary old fashioned','Smoked orange',520,''],['Burrata, charred tomato','Basil oil, sourdough',590,''],['Sunset spritz','Amaro, blood orange',460,'Bar'],['Masala fries','Chaat dust, lime',290,'']]},
+night:{n:'Late night',s:'After dark, the lights drop, the glass fills and the menu stops following rules.',img:'img/cocktail.jpg',i:[['Smoked old fashioned','Orange, rosemary',560,'Bar'],['Midnight negroni','Coffee, vermouth',520,''],['Lamb shank, slow-cooked','Mash, jus',890,'Chef'],['Truffle toasties','Late-night comfort',420,''],['Chocolate, salt, fire','Dessert to share',380,'Share']]}};
+const O=document.querySelectorAll('.hero .bg img');
+function set(k){document.body.dataset.m=k;document.querySelectorAll('.moods button').forEach(b=>b.classList.toggle('on',b.dataset.m==k));O.forEach(i=>i.classList.toggle('on',i.dataset.m==k));const d=M[k];document.getElementById('hs').textContent=d.s;document.getElementById('mn').textContent=d.n;document.getElementById('mimg').src=d.img;document.getElementById('ml').innerHTML=d.i.map(x=>`<div class="mi"><div><h3>${x[0]}${x[3]?`<span class="tag">${x[3]}</span>`:''}</h3><p>${x[1]}</p></div><span class="d"></span><span class="pr">${x[2]}</span></div>`).join('')}
+document.querySelectorAll('.moods button').forEach(b=>b.onclick=()=>set(b.dataset.m));
+const h=new Date().getHours();set(h>=11&&h<16?'day':h>=16&&h<19?'gold':'night');
+const st={d:'Tonight',t:'8:30 pm',g:'2'};
+function chips(id,arr,key){const el=document.getElementById(id);el.innerHTML=arr.map(a=>`<button class="${st[key]==a?'on':''}">${a}</button>`).join('');el.onclick=e=>{if(e.target.tagName!='BUTTON')return;st[key]=e.target.textContent;chips(id,arr,key);sum()}}
+const days=['Tonight','Tomorrow'];for(let i=2;i<6;i++){const d=new Date(Date.now()+i*864e5);days.push(d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'}))}
+chips('cd',days,'d');chips('ct',['1:00 pm','2:30 pm','5:00 pm','7:00 pm','8:30 pm','10:00 pm'],'t');chips('cg',['1','2','3','4','5','6','8+'],'g');
+function sum(){const n=document.getElementById('nm').value.trim();document.getElementById('sum').textContent=`${st.d}, ${st.t} · ${st.g} guest${st.g=='1'?'':'s'}`;document.getElementById('rs').href='https://wa.me/919818282129?text='+encodeURIComponent(`Hi Limitless! I'd like a table for ${st.g} on ${st.d} at ${st.t}${n?'. Name: '+n:''}.`)}
+document.getElementById('nm').oninput=sum;sum();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body></html>
